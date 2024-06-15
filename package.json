@@ -1,0 +1,20 @@
+{
+  "name": "proyecto-bit",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miklegonza/componentes-bit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miklegonza/componentes-bit/issues"
+  },
+  "homepage": "https://github.com/miklegonza/componentes-bit#readme",
+  "description": ""
+}
