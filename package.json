@@ -16,5 +16,8 @@
     "url": "https://github.com/miklegonza/componentes-bit/issues"
   },
   "homepage": "https://github.com/miklegonza/componentes-bit#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
 }
