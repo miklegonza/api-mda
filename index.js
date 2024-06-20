@@ -1,10 +1,10 @@
 const express= require('express');
-//const conectardb=require('./config/db');
+const conectardb=require('./config/db');
 const cors=require('cors');
 const app= express();
 const rutas=require('./src/routes/routes')
 
-//conectardb
+conectardb ()
 
 app.use(cors());
 app.use(express())
