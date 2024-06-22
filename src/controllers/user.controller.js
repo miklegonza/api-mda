@@ -78,13 +78,16 @@ const deleteUser = async (req, res) => {
         const { id } = req.params;
 
         const userExists = await userModel.findById(id);
-
         if (!userExists) {
             res.status(400).send({ message: 'El usuario no existe' });
             return;
         }
 
-        const deleted = await userModel.deleteOne({ id });
+        const deleted = await userModel.deleteOne({ _id: id });
+        if (deleted.deletedCount === 0) {
+            res.status(400).send({ message: 'No se eliminó' });
+            return;
+        }
         res.status(200).send(deleted);
     } catch (error) {
         console.log('🚀 ~ deleteUser ~ error:', error);
@@ -99,4 +102,3 @@ module.exports = {
     updateUser,
     deleteUser,
 };
-
