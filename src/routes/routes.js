@@ -13,8 +13,8 @@ const {
     getOrderById,
     crearOrder,
     updatedOrder,
-    deletedOrder
-} = require('../controllers/order.controller')
+    deletedOrder,
+} = require('../controllers/order.controller');
 
 const router = Router();
 
@@ -35,9 +35,9 @@ router.delete('/components/:id', componentes.borrarProducto);
 /* Pedidos */
 
 router.get('/orders', getOrder);
-router.get('/orders/:id', getOrderById)
-router.post('orders', crearOrder)
-router.put('orders/:id', updatedOrder)
-router.delete('orders/:id', deletedOrder)
+router.get('/orders/:id', getOrderById);
+router.post('/orders', crearOrder);
+router.put('/orders/:id', updatedOrder);
+router.delete('/orders/:id', deletedOrder);
 
 module.exports = router;

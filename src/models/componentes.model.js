@@ -13,7 +13,7 @@ const ComponentesSchema = new Schema(
             required: true,
         },
         modelo: {
-            type: Number,
+            type: String,
             required: true,
         },
         caracteristicas: {
@@ -27,8 +27,8 @@ const ComponentesSchema = new Schema(
         imagen: {
             type: String,
             required: true,
-            default: "https://via.placeholder.com/50x50"
-        }
+            default: 'https://via.placeholder.com/50x50',
+        },
     },
     {
         timestamps: true,
@@ -36,4 +36,4 @@ const ComponentesSchema = new Schema(
     }
 );
 
-module.exports = mongoose.model('Componente', ComponentesSchema);
+module.exports = mongoose.model('Component', ComponentesSchema);
