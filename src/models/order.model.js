@@ -14,7 +14,11 @@ const orderShema = mongoose.Schema(
             type: String,
             require: true,
         },
-        producop: {
+        direccion: {
+            type: String,
+            require: true,
+        },
+        productos: {
             type: [],
             require: true,
         },
@@ -33,4 +37,4 @@ const orderShema = mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model('order', orderShema);
+module.exports = mongoose.model('Order', orderShema);
