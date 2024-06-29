@@ -1,6 +1,11 @@
 const { Router } = require('express');
-const componentes = require('../controllers/componentes.controllers');
-
+const {
+    getComponents,
+    getComponentById,
+    createComponent,
+    updateComponent,
+    deleteComponent,
+} = require('../controllers/component.controllers');
 const {
     getUsers,
     getUserByUsername,
@@ -26,14 +31,13 @@ router.put('/users/:id', updateUser);
 router.delete('/users/:id', deleteUser);
 
 /* Componentes */
-router.get('/components', componentes.consultarProductos);
-router.get('/components/:id', componentes.consultarUnProducto);
-router.post('/components', componentes.crearProducto);
-router.put('/components/:id', componentes.actualizarProducto);
-router.delete('/components/:id', componentes.borrarProducto);
+router.get('/components', getComponents);
+router.get('/components/:id', getComponentById);
+router.post('/components', createComponent);
+router.put('/components/:id', updateComponent);
+router.delete('/components/:id', deleteComponent);
 
 /* Pedidos */
-
 router.get('/orders', getOrder);
 router.get('/orders/:id', getOrderById);
 router.post('/orders', crearOrder);

@@ -17,17 +17,17 @@ const ComponentesSchema = new Schema(
             required: true,
         },
         caracteristicas: {
-            type: String,
+            type: [String],
             required: true,
         },
         precio: {
-            type: String,
+            type: Number,
             required: true,
         },
         imagen: {
             type: String,
             required: true,
-            default: 'https://via.placeholder.com/50x50',
+            default: 'https://via.placeholder.com/100x100',
         },
     },
     {
