@@ -14,11 +14,11 @@ const {
     updateUser,
 } = require('../controllers/user.controller');
 const {
-    getOrder,
+    getOrders,
     getOrderById,
-    crearOrder,
-    updatedOrder,
-    deletedOrder,
+    createOrder,
+    updateOrder,
+    deleteOrder,
 } = require('../controllers/order.controller');
 
 const router = Router();
@@ -38,10 +38,10 @@ router.put('/components/:id', updateComponent);
 router.delete('/components/:id', deleteComponent);
 
 /* Pedidos */
-router.get('/orders', getOrder);
+router.get('/orders', getOrders);
 router.get('/orders/:id', getOrderById);
-router.post('/orders', crearOrder);
-router.put('/orders/:id', updatedOrder);
-router.delete('/orders/:id', deletedOrder);
+router.post('/orders', createOrder);
+router.put('/orders/:id', updateOrder);
+router.delete('/orders/:id', deleteOrder);
 
 module.exports = router;
