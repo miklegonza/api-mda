@@ -1,5 +1,27 @@
 const userModel = require('../models/user.model');
 
+const login = async (req, res) => {
+    try {
+        const { usuario, clave } = req.body;
+        const user = await userModel.findOne(
+            { usuario },
+            { _id: true, usuario: true, clave: true, nombre: true }
+        );
+        if (!user) {
+            res.status(403).send({ message: 'Usuario no encontrado' });
+            return;
+        }
+        if (clave !== user.clave) {
+            res.status(401).send({ message: 'La clave es incorrecta' });
+            return;
+        }
+        res.status(200).send(user);
+    } catch (error) {
+        console.log('🚀 ~ login ~ error:', error);
+        res.status(500).send({ message: 'Error al buscar el usuario' });
+    }
+};
+
 const getUsers = async (req, res) => {
     try {
         const users = await userModel.find();
@@ -12,8 +34,8 @@ const getUsers = async (req, res) => {
 
 const getUserByUsername = async (req, res) => {
     try {
-        const { username } = req.params;
-        const user = await userModel.findOne({ username });
+        const { usuario } = req.params;
+        const user = await userModel.findOne({ usuario });
         if (!user) {
             res.status(401).send({ message: 'El usuario no existe' });
             return;
@@ -27,13 +49,13 @@ const getUserByUsername = async (req, res) => {
 
 const createUser = async (req, res) => {
     try {
-        const { username, name, phone, email, password, admin } = req.body;
+        const { usuario, nombre, telefono, correo, clave, admin } = req.body;
         const user = new userModel({
-            username,
-            name,
-            phone,
-            email,
-            password,
+            usuario,
+            nombre,
+            telefono,
+            correo,
+            clave,
             admin,
         });
         const saved = await user.save();
@@ -47,7 +69,7 @@ const createUser = async (req, res) => {
 const updateUser = async (req, res) => {
     try {
         const { id } = req.params;
-        const { username, name, phone, email, password, admin } = req.body;
+        const { usuario, nombre, telefono, correo, clave, admin } = req.body;
 
         const userExists = await userModel.findById(id);
 
@@ -56,11 +78,11 @@ const updateUser = async (req, res) => {
             return;
         }
 
-        userExists.username = username;
-        userExists.name = name;
-        userExists.phone = phone;
-        userExists.email = email;
-        userExists.password = password;
+        userExists.usuario = usuario;
+        userExists.nombre = nombre;
+        userExists.telefono = telefono;
+        userExists.correo = correo;
+        userExists.clave = clave;
         userExists.admin = admin;
 
         const updated = await userModel.findByIdAndUpdate(id, userExists, {
@@ -96,6 +118,7 @@ const deleteUser = async (req, res) => {
 };
 
 module.exports = {
+    login,
     getUsers,
     getUserByUsername,
     createUser,

@@ -12,6 +12,7 @@ const {
     createUser,
     deleteUser,
     updateUser,
+    login,
 } = require('../controllers/user.controller');
 const {
     getOrders,
@@ -24,8 +25,9 @@ const {
 const router = Router();
 
 /* Usuarios */
+router.post('/login', login);
 router.get('/users', getUsers);
-router.get('/users/:username', getUserByUsername);
+router.get('/users/:usuario', getUserByUsername);
 router.post('/users', createUser);
 router.put('/users/:id', updateUser);
 router.delete('/users/:id', deleteUser);
