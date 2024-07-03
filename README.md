@@ -1,6 +1,6 @@
 # MSA
 
-El proyecto
+e-commerce productos gaming 
 
 ## Contribuidores
 
