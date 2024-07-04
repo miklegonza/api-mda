@@ -22,6 +22,17 @@ const {
     deleteOrder,
 } = require('../controllers/order.controller');
 
+
+const{
+    getCarritos,
+    getCarritoById,
+    createCarrito,
+    updateCarrito,
+    deleteCarrito,
+
+} =require("../controllers/carrito.controller");
+
+
 const router = Router();
 
 /* Usuarios */
@@ -45,5 +56,11 @@ router.get('/orders/:id', getOrderById);
 router.post('/orders', createOrder);
 router.put('/orders/:id', updateOrder);
 router.delete('/orders/:id', deleteOrder);
+
+/*carrito*/
+router.get("/carrito",getCarritos);
+
+
+
 
 module.exports = router;
