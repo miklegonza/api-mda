@@ -77,7 +77,7 @@ const updateOrder = async (req, res) => {
         orderExists.telefono = telefono;
         orderExists.correo = correo;
         orderExists.direccion = direccion;
-        orderExists.producto = productos;
+        orderExists.productos = productos;
         orderExists.medioPago = medioPago;
         orderExists.total = total;
 
