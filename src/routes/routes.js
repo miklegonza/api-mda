@@ -21,17 +21,13 @@ const {
     updateOrder,
     deleteOrder,
 } = require('../controllers/order.controller');
-
-
-const{
+const {
     getCarritos,
     getCarritoById,
     createCarrito,
     updateCarrito,
     deleteCarrito,
-
-} =require("../controllers/carrito.controller");
-
+} = require('../controllers/carrito.controllers');
 
 const router = Router();
 
@@ -58,9 +54,10 @@ router.put('/orders/:id', updateOrder);
 router.delete('/orders/:id', deleteOrder);
 
 /*carrito*/
-router.get("/carrito",getCarritos);
-
-
-
+router.get('/cart', getCarritos);
+router.get('/cart/:id', getCarritoById);
+router.post('/cart', createCarrito);
+router.put('/cart/:id', updateCarrito);
+router.delete('/cart/:id', deleteCarrito);
 
 module.exports = router;

@@ -29,6 +29,11 @@ const ComponentesSchema = new Schema(
             required: true,
             default: 'https://via.placeholder.com/100x100',
         },
+        carrito: {
+            type: Boolean,
+            required: false,
+            default: false,
+        },
     },
     {
         timestamps: true,

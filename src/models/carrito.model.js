@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const carritoSchema = new Schema(
     {
-        nombre: {
+        producto: {
             type: String,
             required: true,
         },
@@ -13,14 +13,14 @@ const carritoSchema = new Schema(
             required: true,
         },
         precio: {
-            type: String,
+            type: Number,
             required: true,
         },
         cantidad: {
-            type: [Boolean],
+            type: Number,
             required: true,
         },
-    
+
         imagen: {
             type: String,
             required: true,
@@ -33,4 +33,4 @@ const carritoSchema = new Schema(
     }
 );
 
-module.exports = mongoose.model('Carrit', carritoSchema);
+module.exports = mongoose.model('Cart', carritoSchema);

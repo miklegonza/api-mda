@@ -33,10 +33,9 @@ const getCarritoById = async (req, res) => {
 
 const createCarrito = async (req, res) => {
     try {
-        const { nombre, marca, precio, cantidad, imagen } =
-            req.body;
+        const { producto, marca, precio, cantidad, imagen } = req.body;
         let carrito = new carritoModel({
-            nombre,
+            producto,
             marca,
             precio,
             cantidad,
@@ -55,8 +54,7 @@ const createCarrito = async (req, res) => {
 const updateCarrito = async (req, res) => {
     try {
         const { id } = req.params;
-        const { nombre, marca, precio, cantidad, imagen  } =
-            req.body;
+        const { producto, marca, precio, cantidad, imagen } = req.body;
         let carritoExist = await carritoModel.findById(id);
 
         if (!carritoExist) {
@@ -64,17 +62,15 @@ const updateCarrito = async (req, res) => {
             return;
         }
 
-        carritoExist.nombre= nombre;
+        carritoExist.producto = producto;
         carritoExist.marca = marca;
         carritoExist.precio = precio;
         carritoExist.cantidad = cantidad;
         carritoExist.imagen = imagen;
 
-        const updated = await carritoModel.findByIdAndUpdate(
-            id,
-            carritoExist,
-            { new: true }
-        );
+        const updated = await carritoModel.findByIdAndUpdate(id, carritoExist, {
+            new: true,
+        });
         res.status(200).send(updated);
     } catch (error) {
         console.log('🚀 ~ updateCarrito ~ error:', error);
@@ -94,7 +90,7 @@ const deleteCarrito = async (req, res) => {
             return;
         }
         const deleted = await carritoModel.deleteOne({ _id: id });
-        if (deleted.deleteCount === 0) {
+        if (deleted.deletedCount === 0) {
             res.status(400).send({ message: 'No se eliminó' });
             return;
         }
