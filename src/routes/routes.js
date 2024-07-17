@@ -1,43 +1,63 @@
 const { Router } = require('express');
-const componentes = require('../controllers/componentes.controllers');
-
+const {
+    getComponents,
+    getComponentById,
+    createComponent,
+    updateComponent,
+    deleteComponent,
+} = require('../controllers/component.controllers');
 const {
     getUsers,
     getUserByUsername,
     createUser,
     deleteUser,
     updateUser,
+    login,
 } = require('../controllers/user.controller');
 const {
-    getOrder,
+    getOrders,
     getOrderById,
-    crearOrder,
-    updatedOrder,
-    deletedOrder
-} = require('../controllers/order.controller')
+    createOrder,
+    updateOrder,
+    deleteOrder,
+} = require('../controllers/order.controller');
+const {
+    getCarritos,
+    getCarritoById,
+    createCarrito,
+    updateCarrito,
+    deleteCarrito,
+} = require('../controllers/carrito.controllers');
 
 const router = Router();
 
 /* Usuarios */
+router.post('/login', login);
 router.get('/users', getUsers);
-router.get('/users/:username', getUserByUsername);
+router.get('/users/:usuario', getUserByUsername);
 router.post('/users', createUser);
 router.put('/users/:id', updateUser);
 router.delete('/users/:id', deleteUser);
 
 /* Componentes */
-router.get('/components', componentes.consultarProductos);
-router.get('/components/:id', componentes.consultarUnProducto);
-router.post('/components', componentes.crearProducto);
-router.put('/components/:id', componentes.actualizarProducto);
-router.delete('/components/:id', componentes.borrarProducto);
+router.get('/components', getComponents);
+router.get('/components/:id', getComponentById);
+router.post('/components', createComponent);
+router.put('/components/:id', updateComponent);
+router.delete('/components/:id', deleteComponent);
 
 /* Pedidos */
+router.get('/orders', getOrders);
+router.get('/orders/:id', getOrderById);
+router.post('/orders', createOrder);
+router.put('/orders/:id', updateOrder);
+router.delete('/orders/:id', deleteOrder);
 
-router.get('/orders', getOrder);
-router.get('/orders/:id', getOrderById)
-router.post('orders', crearOrder)
-router.put('orders/:id', updatedOrder)
-router.delete('orders/:id', deletedOrder)
+/*carrito*/
+router.get('/cart', getCarritos);
+router.get('/cart/:id', getCarritoById);
+router.post('/cart', createCarrito);
+router.put('/cart/:id', updateCarrito);
+router.delete('/cart/:id', deleteCarrito);
 
 module.exports = router;

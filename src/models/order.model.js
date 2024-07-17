@@ -1,40 +1,40 @@
-const mongonse = require('mongoose')
+const mongoose = require('mongoose');
 
-
-const orderShema = mongonse.Schema({
-    nombre: {
-        type: String,
-        require: true
+const orderShema = mongoose.Schema(
+    {
+        nombre: {
+            type: String,
+            require: true,
+        },
+        telefono: {
+            type: Number,
+            require: true,
+        },
+        correo: {
+            type: String,
+            require: true,
+        },
+        direccion: {
+            type: String,
+            require: true,
+        },
+        productos: {
+            type: [],
+            require: true,
+        },
+        medioPago: {
+            type: String,
+            require: true,
+        },
+        total: {
+            type: Number,
+            require: true,
+        },
     },
-    telefono: {
-        type: Boolean,
-        require: true
-
-    },
-    correo: {
-        type: String,
-        require: true
-    },
-    producop: {
-        type: [],
-        require: true
-
-    },
-    medioPago: {
-        type: String,
-        require: true
-
-    },
-    total: {
-        type: Boolean,
-        require: true
-
+    {
+        timestamps: true,
+        versionKey: false,
     }
-}, {
-    timestamps: true,
-    versionKey: false
-}
+);
 
-)
-
-module.exports = mongoonse.model('order', orderShema)
+module.exports = mongoose.model('Order', orderShema);

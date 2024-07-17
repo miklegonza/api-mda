@@ -13,22 +13,27 @@ const ComponentesSchema = new Schema(
             required: true,
         },
         modelo: {
-            type: Number,
+            type: String,
             required: true,
         },
         caracteristicas: {
-            type: String,
+            type: [String],
             required: true,
         },
         precio: {
-            type: String,
+            type: Number,
             required: true,
         },
         imagen: {
             type: String,
             required: true,
-            default: "https://via.placeholder.com/50x50"
-        }
+            default: 'https://via.placeholder.com/100x100',
+        },
+        carrito: {
+            type: Boolean,
+            required: false,
+            default: false,
+        },
     },
     {
         timestamps: true,
@@ -36,4 +41,4 @@ const ComponentesSchema = new Schema(
     }
 );
 
-module.exports = mongoose.model('Componente', ComponentesSchema);
+module.exports = mongoose.model('Component', ComponentesSchema);

@@ -2,32 +2,29 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const userSchema = new Schema(
+const carritoSchema = new Schema(
     {
-        usuario: {
+        producto: {
             type: String,
             required: true,
         },
-        nombre: {
+        marca: {
             type: String,
             required: true,
         },
-        telefono: {
+        precio: {
             type: Number,
             required: true,
         },
-        correo: {
-            type: String,
+        cantidad: {
+            type: Number,
             required: true,
         },
-        clave: {
+
+        imagen: {
             type: String,
             required: true,
-        },
-        admin: {
-            type: Boolean,
-            required: true,
-            default: false,
+            default: 'https://via.placeholder.com/100x100',
         },
     },
     {
@@ -36,4 +33,4 @@ const userSchema = new Schema(
     }
 );
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('Cart', carritoSchema);
